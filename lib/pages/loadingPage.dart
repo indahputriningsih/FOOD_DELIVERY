@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/pages/login_page.dart';
 
 class loadingPage extends StatefulWidget {
+  const loadingPage({super.key});
+
   @override
   State<loadingPage> createState() => _loadingPageState();
 }
@@ -13,7 +15,7 @@ class _loadingPageState extends State<loadingPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => LoginPage()));
     });
@@ -29,7 +31,7 @@ class _loadingPageState extends State<loadingPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FadeInDown(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               child: Image.asset(
                 "assets/images/Logo.png",
                 width: 170,

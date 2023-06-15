@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/material/colors.dart';
 
 class MyTextField extends StatelessWidget {
   final controller;

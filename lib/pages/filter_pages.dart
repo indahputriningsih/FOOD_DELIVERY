@@ -1,13 +1,8 @@
-import 'dart:math';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery/components/button.dart';
 import 'package:food_delivery/components/category_button%20.dart';
-import 'package:food_delivery/components/squar_tile.dart';
 import 'package:food_delivery/pages/homePage.dart';
-import 'package:food_delivery/pages/login_page.dart';
 import 'package:food_delivery/widgets/coffeCard.dart';
 import 'package:food_delivery/widgets/partnerCard.dart';
 import '../components/search_button.dart';
@@ -19,16 +14,16 @@ class filterPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF4F5F7),
+      backgroundColor: const Color(0xFFF4F5F7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: 520,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
@@ -41,20 +36,20 @@ class filterPages extends StatelessWidget {
                       controller: controller,
                       obscuretext: false,
                       hintText: 'Search In Cody',
-                      Widget1: Icon(Icons.location_on),
+                      Widget1: const Icon(Icons.location_on),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.location_on,
                               color: Colors.grey,
                             ),
-                            SizedBox(width: 10),
-                            Container(
+                            const SizedBox(width: 10),
+                            SizedBox(
                               width: 150,
                               height: 70,
                               child: DropdownSearch<String>(
@@ -63,14 +58,14 @@ class filterPages extends StatelessWidget {
                                   disabledItemFn: (String s) =>
                                       s.startsWith('I'),
                                 ),
-                                items: [
+                                items: const [
                                   "Darussalam",
                                   "Subulussalam",
                                   "Banda Aceh",
                                   "Aceh Besar",
                                   "Aceh Selatan"
                                 ],
-                                dropdownDecoratorProps: DropDownDecoratorProps(
+                                dropdownDecoratorProps: const DropDownDecoratorProps(
                                   dropdownSearchDecoration: InputDecoration(
                                     labelText: "Delivery To",
                                     labelStyle: TextStyle(
@@ -88,7 +83,7 @@ class filterPages extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           height: 40,
                           width: 100,
                           decoration: BoxDecoration(
@@ -96,7 +91,7 @@ class filterPages extends StatelessWidget {
                             color: Colors.grey.shade200,
                           ),
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(Icons.settings_input_component_rounded,
                                   color: Colors.grey, size: 20),
                               SizedBox(width: 10),
@@ -106,15 +101,15 @@ class filterPages extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Container(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: 35,
                         right: 35,
                       ),
                       height: 70,
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         border: Border(
                           top: BorderSide(width: 2, color: Color(0xFFF4F5F7)),
                           bottom:
@@ -134,7 +129,7 @@ class filterPages extends StatelessWidget {
                               // );
                             },
                             splashColor: Colors.pink,
-                            child: Text(
+                            child: const Text(
                               "Category",
                               style: TextStyle(
                                   fontSize: 18,
@@ -142,12 +137,12 @@ class filterPages extends StatelessWidget {
                                   color: Color(0xFFEF9F27)),
                             ),
                           ),
-                          Text(
+                          const Text(
                             "Sort By",
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          Text(
+                          const Text(
                             "Price",
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
@@ -191,13 +186,13 @@ class filterPages extends StatelessWidget {
                             Navigator.pop(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return LoginPage1();
+                                return const LoginPage1();
                               }),
                             );
                           },
                           nameBtn: "Complete"),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(
@@ -222,7 +217,7 @@ class filterPages extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 height: 345,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -230,12 +225,12 @@ class filterPages extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             "Best Partners",
                             style: TextStyle(
@@ -247,7 +242,7 @@ class filterPages extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 41),
+                      const SizedBox(height: 41),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -262,7 +257,7 @@ class filterPages extends StatelessWidget {
                               ratting: "4.8",
                               ontap: () {},
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             partnerCard(
                               images: "assets/images/taco.png",
                               jarak: "0.2km",
@@ -280,11 +275,11 @@ class filterPages extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: GridView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,

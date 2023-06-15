@@ -27,11 +27,11 @@ class _menuState extends State<menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: IndexedStack(
           index: _SelectedTab.values.indexOf(_selectedTab),
-          children: [
+          children: const [
             LoginPage1(),
             compassPage(),
             orderPage(),
@@ -42,8 +42,8 @@ class _menuState extends State<menu> {
       bottomNavigationBar: DotNavigationBar(
         currentIndex: _SelectedTab.values.indexOf(_selectedTab),
         onTap: _handleIndexChanged,
-        dotIndicatorColor: Color(0xffEF9F27),
-        backgroundColor: Color(0xffF5F6FA),
+        dotIndicatorColor: const Color(0xffEF9F27),
+        backgroundColor: const Color(0xffF5F6FA),
         paddingR: const EdgeInsets.symmetric(
           vertical: 10,
           horizontal: 10,

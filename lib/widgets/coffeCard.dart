@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class coffeCard extends StatelessWidget {
   coffeCard({
+    super.key,
     required this.category,
     required this.coffeImg,
     required this.name,
@@ -24,7 +23,7 @@ class coffeCard extends StatelessWidget {
         onTap: () {},
         borderRadius: BorderRadius.circular(15),
         child: Container(
-          padding: EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(top: 15),
           width: 164,
           height: 240,
           decoration: BoxDecoration(
@@ -34,20 +33,20 @@ class coffeCard extends StatelessWidget {
           child: Column(
             children: [
               Center(
-                child: Image.asset(coffeImg),
+                child: Image.network(coffeImg),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
-                padding: EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 15),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Text(
                           name,
-                          style: TextStyle(fontSize: 20),
+                          style: const TextStyle(fontSize: 20),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Image.asset("assets/images/love.png")
                       ],
                     ),
@@ -55,14 +54,14 @@ class coffeCard extends StatelessWidget {
                       children: [
                         Text(
                           openClose,
-                          style:
-                              TextStyle(fontSize: 12, color: Color(0xff00875A)),
+                          style: const TextStyle(
+                              fontSize: 12, color: Color(0xff00875A)),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
                           category,
-                          style:
-                              TextStyle(fontSize: 12, color: Color(0xff7A869A)),
+                          style: const TextStyle(
+                              fontSize: 12, color: Color(0xff7A869A)),
                         )
                       ],
                     ),

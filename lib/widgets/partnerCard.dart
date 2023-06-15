@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class partnerCard extends StatelessWidget {
   partnerCard(
-      {required this.images,
+      {super.key, required this.images,
       required this.jarak,
       required this.location,
       required this.name,
@@ -35,13 +33,13 @@ class partnerCard extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(images),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   Image.asset("assets/images/love.png"),
                 ],
@@ -50,16 +48,16 @@ class partnerCard extends StatelessWidget {
                 children: [
                   Text(
                     openClose,
-                    style: TextStyle(color: Color(0xff00875A)),
+                    style: const TextStyle(color: Color(0xff00875A)),
                   ),
-                  SizedBox(width: 18),
+                  const SizedBox(width: 18),
                   Text(
                     location,
-                    style: TextStyle(color: Color(0xff7A869A)),
+                    style: const TextStyle(color: Color(0xff7A869A)),
                   ),
                 ],
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Row(
                 children: [
                   Container(
@@ -67,27 +65,27 @@ class partnerCard extends StatelessWidget {
                     height: 24,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Color(0xffEF9F27),
+                      color: const Color(0xffEF9F27),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset("assets/images/star.png"),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
                           ratting,
-                          style: TextStyle(color: Colors.white, fontSize: 12),
+                          style: const TextStyle(color: Colors.white, fontSize: 12),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Text(
                     jarak,
-                    style: TextStyle(color: Color(0xff172B4D), fontSize: 12),
+                    style: const TextStyle(color: Color(0xff172B4D), fontSize: 12),
                   ),
-                  SizedBox(width: 16),
-                  Text(
+                  const SizedBox(width: 16),
+                  const Text(
                     "Free Shipping",
                     style: TextStyle(color: Color(0xff172B4D), fontSize: 12),
                   ),

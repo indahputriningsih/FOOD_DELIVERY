@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class SquareTile extends StatelessWidget {
   final String Imagepath;
   final String Connect;
-  SquareTile({
+  const SquareTile({
     super.key,
     required this.Imagepath,
     required this.Connect,
@@ -31,8 +29,8 @@ class SquareTile extends StatelessWidget {
 // }
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 25),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
         borderRadius: BorderRadius.circular(20),

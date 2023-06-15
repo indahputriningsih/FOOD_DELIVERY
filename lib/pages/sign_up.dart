@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/button.dart';
 import 'package:food_delivery/components/squar_tile.dart';
 import 'package:food_delivery/components/textField.dart';
-import 'package:food_delivery/menu.dart';
-import 'package:food_delivery/pages/sign_up.dart';
+import 'package:food_delivery/pages/login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class signUpPages extends StatelessWidget {
+  signUpPages({super.key});
 
 //edit text
   final usernameController = TextEditingController();
@@ -30,7 +29,7 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 //logo
-                const SizedBox(height: 5),
+
                 //welcome back
                 const Text(
                   'Selamat Datang',
@@ -44,31 +43,39 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Hallo Indah, Lanjutkan untuk Masuk',
+                      'Lanjutkan untuk Masuk',
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 14,
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 5),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return signUpPages();
+                            return LoginPage();
                           }),
                         );
                       },
                       child: const Text(
-                        "atau buat akun",
+                        "masuk",
                         style: TextStyle(color: Color(0xFFEF9F27)),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
+                ),
+                MyTextField(
+                  controller: usernameController,
+                  hintText: 'Yourname',
+                  obscuretext: false,
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
 
                 //username textfield
@@ -79,7 +86,7 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 //password texfield
 
@@ -89,18 +96,18 @@ class LoginPage extends StatelessWidget {
                   obscuretext: true,
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 //sig in
                 MyButton(
                   ontap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return const menu();
+                        return LoginPage();
                       }),
                     );
                   },
-                  nameBtn: "Sign In",
+                  nameBtn: "Sign Up",
                 ),
 
                 const SizedBox(height: 10),

@@ -1,33 +1,49 @@
-import 'dart:math';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:food_delivery/components/squar_tile.dart';
-import 'package:food_delivery/menu.dart';
 import 'package:food_delivery/pages/filter_pages.dart';
-import 'package:food_delivery/pages/see_all.dart';
 import 'package:food_delivery/widgets/coffeCard.dart';
 import 'package:food_delivery/widgets/partnerCard.dart';
 import '../components/search_button.dart';
+import '../model.dart';
+import '../repository.dart';
 
-class LoginPage1 extends StatelessWidget {
-  LoginPage1({super.key});
+class LoginPage1 extends StatefulWidget {
+  const LoginPage1({super.key});
 
+  @override
+  State<LoginPage1> createState() => _LoginPage1State();
+}
+
+class _LoginPage1State extends State<LoginPage1> {
   final controller = TextEditingController();
+
+  List<Brand> listBrand = [];
+  Repository repository = Repository();
+
+  getData() async {
+    listBrand = await repository.getData();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF4F5F7),
+      backgroundColor: const Color(0xFFF4F5F7),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 width: double.infinity,
                 height: 240,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
@@ -40,20 +56,20 @@ class LoginPage1 extends StatelessWidget {
                       controller: controller,
                       obscuretext: false,
                       hintText: 'Search In Cody',
-                      Widget1: Icon(Icons.location_on),
+                      Widget1: const Icon(Icons.location_on),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.location_on,
                               color: Colors.grey,
                             ),
-                            SizedBox(width: 10),
-                            Container(
+                            const SizedBox(width: 10),
+                            SizedBox(
                               width: 150,
                               height: 70,
                               child: DropdownSearch<String>(
@@ -62,14 +78,15 @@ class LoginPage1 extends StatelessWidget {
                                   disabledItemFn: (String s) =>
                                       s.startsWith('I'),
                                 ),
-                                items: [
+                                items: const [
                                   "Darussalam",
                                   "Subulussalam",
                                   "Banda Aceh",
                                   "Aceh Besar",
                                   "Aceh Selatan"
                                 ],
-                                dropdownDecoratorProps: DropDownDecoratorProps(
+                                dropdownDecoratorProps:
+                                    const DropDownDecoratorProps(
                                   dropdownSearchDecoration: InputDecoration(
                                     labelText: "Delivery To",
                                     labelStyle: TextStyle(
@@ -86,7 +103,7 @@ class LoginPage1 extends StatelessWidget {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           height: 40,
                           width: 100,
                           decoration: BoxDecoration(
@@ -94,7 +111,7 @@ class LoginPage1 extends StatelessWidget {
                             color: Colors.grey.shade200,
                           ),
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(Icons.settings_input_component_rounded,
                                   color: Colors.grey, size: 20),
                               SizedBox(width: 10),
@@ -104,7 +121,7 @@ class LoginPage1 extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Container(
                       width: 60,
                       decoration: BoxDecoration(
@@ -137,7 +154,7 @@ class LoginPage1 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 height: 345,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -145,12 +162,12 @@ class LoginPage1 extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             "Best Partners",
                             style: TextStyle(
@@ -162,12 +179,13 @@ class LoginPage1 extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 41),
+                      const SizedBox(height: 41),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            // for (var i in listBrand)penganti list view
                             partnerCard(
                               images: "assets/images/burger1.png",
                               jarak: "1.5km",
@@ -177,7 +195,7 @@ class LoginPage1 extends StatelessWidget {
                               ratting: "4.8",
                               ontap: () {},
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             partnerCard(
                               images: "assets/images/taco.png",
                               jarak: "0.2km",
@@ -194,83 +212,25 @@ class LoginPage1 extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(15),
-                child: GridView(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    mainAxisExtent: 275,
-                  ),
-                  children: [
-                    coffeCard(
-                      category: "Coffe",
-                      coffeImg: "assets/images/starbuck.png",
-                      name: "Starbuck",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Fast Food",
-                      coffeImg: "assets/images/subway.png",
-                      name: "Subway",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Coffe",
-                      coffeImg: "assets/images/Group 11.png",
-                      name: "Taco Bell",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Fast Food",
-                      coffeImg: "assets/images/Group 12.png",
-                      name: "Pizza",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Fast Food",
-                      coffeImg: "assets/images/burgerking.png",
-                      name: "Burger King",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Fast Food",
-                      coffeImg: "assets/images/mcd.png",
-                      name: "MCD",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Coffe",
-                      coffeImg: "assets/images/starbuck.png",
-                      name: "Starbuck",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Coffe",
-                      coffeImg: "assets/images/starbuck.png",
-                      name: "Starbuck",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                    coffeCard(
-                      category: "Coffe",
-                      coffeImg: "assets/images/starbuck.png",
-                      name: "Starbuck",
-                      openClose: "Open",
-                      ontap: () {},
-                    ),
-                  ],
+              GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  mainAxisExtent: 300,
                 ),
+                itemBuilder: (context, index) {
+                  return coffeCard(
+                    category: listBrand[index].category,
+                    coffeImg: listBrand[index].brandimages,
+                    name: listBrand[index].brand,
+                    openClose: "open",
+                    ontap: () {},
+                  );
+                },
+                itemCount: listBrand.length,
               ),
             ],
           ),
@@ -279,3 +239,79 @@ class LoginPage1 extends StatelessWidget {
     );
   }
 }
+
+// GridView(
+//                   physics: NeverScrollableScrollPhysics(),
+//                   shrinkWrap: true,
+//                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                     crossAxisCount: 2,
+//                     crossAxisSpacing: 16,
+//                     mainAxisSpacing: 16,
+//                     mainAxisExtent: 275,
+//                   ),
+//                   children: [
+//                     coffeCard(
+//                       category: "Coffe",
+//                       coffeImg: "assets/images/starbuck.png",
+//                       name: "Starbuck",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Fast Food",
+//                       coffeImg: "assets/images/subway.png",
+//                       name: "Subway",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Coffe",
+//                       coffeImg: "assets/images/Group 11.png",
+//                       name: "Taco Bell",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Fast Food",
+//                       coffeImg: "assets/images/Group 12.png",
+//                       name: "Pizza",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Fast Food",
+//                       coffeImg: "assets/images/burgerking.png",
+//                       name: "Burger King",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Fast Food",
+//                       coffeImg: "assets/images/mcd.png",
+//                       name: "MCD",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Coffe",
+//                       coffeImg: "assets/images/starbuck.png",
+//                       name: "Starbuck",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Coffe",
+//                       coffeImg: "assets/images/starbuck.png",
+//                       name: "Starbuck",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                     coffeCard(
+//                       category: "Coffe",
+//                       coffeImg: "assets/images/starbuck.png",
+//                       name: "Starbuck",
+//                       openClose: "Open",
+//                       ontap: () {},
+//                     ),
+//                   ],
+//                 ),
